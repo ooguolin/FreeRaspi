@@ -4,6 +4,7 @@ from os.path import join, dirname
 from watson_developer_cloud import TextToSpeechV1
 # import pyaudio
 # import wave
+print 'hi'
 from amadeus import Flights
 # CHUNK_SIZE = 1024
 flights = Flights('GSzQprGAxBxZfvjhTk1qev1xIu5sZQro')
