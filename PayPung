@@ -1,0 +1,23 @@
+import requests
+import json
+apiKey = '4d9c4d96222d05129ba64ba0be5b388c'
+url = "http://api.reimaginebanking.com/customers?key=4d9c4d96222d05129ba64ba0be5b388c"
+payload = {
+    "first_name": "Heetesh",
+    "last_name": "Alwani",
+    "address": {
+    "street_number": "2451",
+    "street_name": "Le Conte Ave",
+    "city": "Singapore",
+    "state": "CA",
+    "zip": "94709"}
+}
+print payload
+# Create a Savings Account
+response = requests.post( 
+    url, 
+    data=json.dumps(payload),
+    headers={'content-type':'application/json'},)
+print response
+if response.status_code == 201:
+    print('account created')
