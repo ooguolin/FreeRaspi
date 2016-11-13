@@ -4,26 +4,48 @@ import json
 apiKey = '4d9c4d96222d05129ba64ba0be5b388c'
 
 url = "http://api.reimaginebanking.com/customers?key=4d9c4d96222d05129ba64ba0be5b388c"
-payload = {
 
-	"first_name": "Heetesh",
-	"last_name": "Alwani",
-	"address": {
-	"street_number": "2451",
-	"street_name": "Le Conte Ave",
-	"city": "Singapore",
-	"state": "CA",
-	"zip": "94709"}
+i = 1
 
-}
-response = requests.post( 
-	url, 
-	data=json.dumps(payload),
-	headers={'content-type':'application/json'},)
-result = json.loads(response.content.decode('utf-8'))
-print result['objectCreated']['_id']
-print type(result)
+while i < 3:
 
-print response.status_code
-if response.status_code == 201:
-	print('account created')
+    if i == 1:	
+        payload = {
+            "first_name": "Heetesh",
+            "last_name": "Alwani",
+            "address": {
+            "street_number": "2451",
+            "street_name": "Le Conte Ave",
+            "city": "Singapore",
+            "state": "CA",
+            "zip": "94709"}
+        }
+        
+    elif i == 2:
+        payload = {
+            "first_name": "Bill",
+            "last_name": "Pung",
+            "address": {
+            "street_number": "2299",
+            "street_name": "Piedmont Ave",
+            "city": "Singapore",
+            "state": "CA",
+            "zip": "94720"}
+        }
+        
+    response = requests.post( 
+        url, 
+        data=json.dumps(payload),
+        headers={'content-type':'application/json'},)
+
+    result = json.loads(response.content.decode('utf-8'))
+    customerid = result['objectCreated']['_id']
+    print customerid
+    #print response.status_code
+
+    if response.status_code == 201:
+        print('Customer %d created!' %i)
+
+    i += 1
+
+
